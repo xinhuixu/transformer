@@ -6,7 +6,7 @@ def draw_lines( matrix, screen, color ):
     if len(matrix) < 2:
         print 'Need at least 2 points to draw'
         return
-    
+
     point = 0
     while point < len(matrix) - 1:
         draw_line( matrix[point][0],
@@ -15,7 +15,13 @@ def draw_lines( matrix, screen, color ):
                    matrix[point+1][1],
                    screen, color)    
         point+= 2
-        
+
+def add_edge_helper( matrix, p ):
+    try:
+        add_edge(matrix, p[0], p[1], p[2], p[3], p[4], p[5])
+    except:
+        print "add_edge_helper: list of param is invalid"
+
 def add_edge( matrix, x0, y0, z0, x1, y1, z1 ):
     add_point(matrix, x0, y0, z0)
     add_point(matrix, x1, y1, z1)
