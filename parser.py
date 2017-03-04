@@ -41,6 +41,7 @@ See the file script for an example of the file format
 def parse_file( fname, points, transform, screen, color ):
     f = open(fname, "r")
     lines = f.readlines()
+    #print lines
     i = 0
     while i < len(lines):
         line = lines[i][:-1]
@@ -48,8 +49,8 @@ def parse_file( fname, points, transform, screen, color ):
         if line[0].isdigit():
             cmd = lines[i - 1][:-1]
             p = line.split(" ")
-            for i in range(len(p)):
-                p[i] = int(p[i])
+            for j in range(len(p)):
+                p[j] = int(p[j])
 
             if cmd == "ident":
                 ident(transform)
