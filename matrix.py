@@ -1,20 +1,55 @@
+from __future__ import division
 import math
 
 def make_translate( x, y, z ):
-    pass
+    m = new_matrix()
+    ident(m)
+    m[0][3] = x
+    m[1][3] = y
+    m[2][3] = z
+    return m
 
 def make_scale( x, y, z ):
-    pass
-
-def make_rotX( theta ):    
-    pass
+    m = new_matrix()
+    m[0][0] = x
+    m[1][1] = y
+    m[2][2] = z
+    m[3][3] = 1
+    return m
+        
+def make_rotZ( theta ):    
+    m = new_matrix()
+    theta = theta * (math.pi/180)
+    m[0][0] = math.cos(theta)
+    m[0][1] = -1*math.sin(theta)
+    m[1][0] = math.sin(theta)
+    m[1][1] = math.cos(theta)
+    m[2][2] = 1
+    m[3][3] = 1
+    return m
 
 def make_rotY( theta ):
-    pass
+    m = new_matrix()
+    theta = math.radians(theta)
+    m[0][0] = math.cos(theta)
+    m[0][2] = math.sin(theta)
+    m[1][1] = 1
+    m[2][0] = -1*sin(theta)
+    m[2][2] = math.cos(theta)
+    m[3][3] = 1
+    return m
 
-def make_rotZ( theta ):
-    pass
-
+def make_rotX( theta ):
+    m = new_matrix()
+    theta = math.radians(theta)
+    m[0][0] = 1
+    m[1][1] = math.cos(theta)
+    m[1][2] = -1* math.sin(theta)
+    m[2][1] = math.sin(theta)
+    m[2][2] = math.cos(theta)
+    m[3][3] = 1
+    return m
+    
 def print_matrix( matrix ):
     s = ''
     for r in range( len( matrix[0] ) ):
