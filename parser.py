@@ -48,8 +48,8 @@ def parse_file( fname, points, transform, screen, color ):
         if line[0].isdigit():
             cmd = lines[i - 1][:-1]
             p = line.split(" ")
-            for num in p:
-                num = int(num)
+            for i in range(len(p)):
+                p[i] = int(p[i])
 
             if cmd == "ident":
                 ident(transform)
