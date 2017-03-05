@@ -26,12 +26,5 @@ display
 ident
 scale
 2 2 2
-translate
-100 100 100
-rotate
-y 33
-rotate
-x 33
 apply
 display
-save

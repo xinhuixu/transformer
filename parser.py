@@ -74,7 +74,7 @@ def parse_file( fname, points, transform, screen, color ):
                 draw_lines(points, screen, color)
                 fname = p[0]
                 save_extension(screen, fname)
-            #print cmd, p
+            print cmd, p
         #end if two lines
         else:
             if line == "apply":
