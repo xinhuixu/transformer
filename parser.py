@@ -71,9 +71,11 @@ def parse_file( fname, points, transform, screen, color ):
                     t = make_rotZ(p[1])                
                 matrix_mult(t, transform)
             elif line == "save":
+                fname = p[0]
+                print "fname: ", fname
+
                 clear_screen(screen)
                 draw_lines(points, screen, color)
-                fname = p[0]
                 save_extension(screen, fname)
             print cmd, p
         #end if two lines
@@ -81,7 +83,6 @@ def parse_file( fname, points, transform, screen, color ):
             if line == "apply":
                 matrix_mult(transform, points)
             elif line == "display":
-                print "DISPLAY"
                 clear_screen(screen)
                 draw_lines(points, screen, color)
                 display(screen)            
