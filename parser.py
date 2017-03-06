@@ -1,6 +1,7 @@
 from display import *
 from matrix import *
 from draw import *
+import time
 import string
 
 """
@@ -85,7 +86,8 @@ def parse_file( fname, points, transform, screen, color ):
             elif line == "display":
                 clear_screen(screen)
                 draw_lines(points, screen, color)
-                display(screen)            
+                display(screen)
+                time.sleep(1)
         #end if solo cmd
         
         i += 1
