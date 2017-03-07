@@ -45,27 +45,31 @@ def parse_file( fname, points, transform, screen, color ):
     print lines
     i = 0
     while i < len(lines):
+
         line = lines[i][:-1]
-        if line[0].isdigit():
+
+        if line[0].isdigit() or line[2].isdigit():
             cmd = lines[i - 1][:-1]
             p = line.split(" ")
             for j in range(len(p)):
-                p[j] = int(p[j])
+                if p[j].isdigit():
+                    p[j] = int(p[j])
             if cmd == "line":
                 add_edge_helper(points, p)
-            elif cmd == "translate":
+            elif cmd == "move":
                 t = make_translate(p[0], p[1], p[2])
                 matrix_mult(t, transform)
             elif cmd == "scale":
                 t = make_scale(p[0], p[1], p[2])
                 matrix_mult(t, transform)
             elif cmd == "rotate":
+                print "i'm rotating around ", p[0]
                 if p[0] == "x":
                     t = make_rotX(p[1])
                 elif p[0] == "y":
                     t = make_rotY(p[1])
                 elif p[1] == "z":
-                    t = make_rotZ(p[1])                
+                    t = make_rotZ(p[1])
                 matrix_mult(t, transform)
             elif line == "save":
                 fname = p[0]
@@ -77,15 +81,15 @@ def parse_file( fname, points, transform, screen, color ):
         #end if two lines
         else:
             if line == "apply":
-                matrix_mult(transform, points)
                 print "applying..."
-                print_matrix(points)
+                matrix_mult(transform, points)
             if line == "ident":                
                 ident(transform)
             elif line == "display":
                 clear_screen(screen)
                 draw_lines(points, screen, color)
-                print "ABOUT TO DISPLAY"
+                print "ABOUT TO DISPLAY THIS: "
+                print_matrix(points)
                 display(screen)
                 time.sleep(1)
 
