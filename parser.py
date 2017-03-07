@@ -42,20 +42,16 @@ See the file script for an example of the file format
 def parse_file( fname, points, transform, screen, color ):
     f = open(fname, "r")
     lines = f.readlines()
-    #print lines
+    print lines
     i = 0
     while i < len(lines):
         line = lines[i][:-1]
-        
         if line[0].isdigit():
             cmd = lines[i - 1][:-1]
             p = line.split(" ")
             for j in range(len(p)):
                 p[j] = int(p[j])
-
-            if cmd == "ident":
-                ident(transform)
-            elif cmd == "line":
+            if cmd == "line":
                 add_edge_helper(points, p)
             elif cmd == "translate":
                 t = make_translate(p[0], p[1], p[2])
@@ -74,20 +70,25 @@ def parse_file( fname, points, transform, screen, color ):
             elif line == "save":
                 fname = p[0]
                 print "fname: ", fname
-
                 clear_screen(screen)
                 draw_lines(points, screen, color)
                 save_extension(screen, fname)
-            print cmd, p
+                time.sleep(1)
         #end if two lines
         else:
             if line == "apply":
                 matrix_mult(transform, points)
+                print "applying..."
+                print_matrix(points)
+            if line == "ident":                
+                ident(transform)
             elif line == "display":
                 clear_screen(screen)
                 draw_lines(points, screen, color)
+                print "ABOUT TO DISPLAY"
                 display(screen)
                 time.sleep(1)
+
         #end if solo cmd
         
         i += 1

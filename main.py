@@ -10,4 +10,5 @@ transform = new_matrix()
 
 parse_file( 'script', edges, transform, screen, color )
 
+print "transform:\n", print_matrix(transform)
 print "points:\n", print_matrix(edges)
