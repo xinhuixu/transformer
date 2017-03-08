@@ -74,10 +74,10 @@ def parse_file( fname, points, transform, screen, color ):
             elif line == "save":
                 fname = p[0]
                 print "fname: ", fname
-                clear_screen(screen)
-                draw_lines(points, screen, color)
+                #clear_screen(screen)
+                #draw_lines(points, screen, color)
                 save_extension(screen, fname)
-                time.sleep(1)
+                time.sleep(0.2)
         #end if two lines
         else:
             if line == "apply":
@@ -87,11 +87,15 @@ def parse_file( fname, points, transform, screen, color ):
                 ident(transform)
             elif line == "display":
                 clear_screen(screen)
+                print "ABOUT TO DRAW..."
+                print_matrix(points)
+                round_all(points)
+                print_matrix(points)
                 draw_lines(points, screen, color)
                 print "ABOUT TO DISPLAY THIS: "
                 print_matrix(points)
                 display(screen)
-                time.sleep(1)
+                time.sleep(0.2)
 
         #end if solo cmd
         

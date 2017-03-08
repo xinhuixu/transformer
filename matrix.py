@@ -1,9 +1,9 @@
 import math
 
-def int_all( matrix):
+def round_all( matrix):
     for r in range( len( matrix[0] ) ):
         for c in range( len(matrix) ):
-            matrix[r][c] = int(matrix[r][c])
+            matrix[c][r] = int(round(matrix[c][r]))
 
 def make_translate( x, y, z ):
     m = new_matrix()
@@ -33,7 +33,7 @@ def make_rotZ( theta ):
     m[1][1] = math.cos(theta)
     m[2][2] = 1
     m[3][3] = 1
-    int_all(m)
+
     return m
 
 def make_rotY( theta ):
@@ -45,7 +45,7 @@ def make_rotY( theta ):
     m[0][2] = -1*math.sin(theta)
     m[2][2] = math.cos(theta)
     m[3][3] = 1
-    int_all(m)
+
     return m
 
 def make_rotX( theta ):
@@ -57,7 +57,7 @@ def make_rotX( theta ):
     m[1][2] = math.sin(theta)
     m[2][2] = math.cos(theta)
     m[3][3] = 1
-    int_all(m)
+
     return m
     
 def print_matrix( matrix ):
