@@ -42,7 +42,7 @@ See the file script for an example of the file format
 def parse_file( fname, points, transform, screen, color ):
     f = open(fname, "r")
     lines = f.readlines()
-    print lines
+#    print lines
     i = 0
     while i < len(lines):
 
@@ -62,8 +62,7 @@ def parse_file( fname, points, transform, screen, color ):
             elif cmd == "scale":
                 t = make_scale(p[0], p[1], p[2])
                 matrix_mult(t, transform)
-            elif cmd == "rotate":
-                print "i'm rotating around ", p[0]
+            elif cmd == "rotate":                
                 if p[0] == "x":
                     t = make_rotX(p[1])
                 elif p[0] == "y":
@@ -87,10 +86,11 @@ def parse_file( fname, points, transform, screen, color ):
                 ident(transform)
             elif line == "display":
                 clear_screen(screen)
-                print "ABOUT TO DRAW..."
-                print_matrix(points)
+
+                #print "ABOUT TO DRAW..."
+                #print_matrix(points)
                 round_all(points)
-                print_matrix(points)
+
                 draw_lines(points, screen, color)
                 print "ABOUT TO DISPLAY THIS: "
                 print_matrix(points)
