@@ -76,7 +76,7 @@ def parse_file( fname, points, transform, screen, color ):
                 #clear_screen(screen)
                 #draw_lines(points, screen, color)
                 save_extension(screen, fname)
-                time.sleep(0.2)
+                time.sleep(1)
         #end if two lines
         else:
             if line == "apply":
@@ -95,7 +95,7 @@ def parse_file( fname, points, transform, screen, color ):
                 print "ABOUT TO DISPLAY THIS: "
                 print_matrix(points)
                 display(screen)
-                time.sleep(0.2)
+                time.sleep(1)
 
         #end if solo cmd
         
